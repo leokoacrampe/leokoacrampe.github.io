@@ -68,6 +68,7 @@
     object-fit: contain;
     margin-top: 20px;
     border-radius: 6px;
+    mix-blend-mode: multiply;
   }
   .date-pill-gold {
     display: inline-block;
@@ -96,26 +97,52 @@
     line-height: 1.2;
   }
 
-  /* Education uses the same card but 2-col grid */
+  /* Education — full-width cards with logo left panel */
   .edu-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
   }
   .edu-card {
     background: var(--card-bg);
     border: 1px solid var(--rule);
     border-radius: 4px;
-    padding: 28px 30px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    overflow: hidden;
     transition: box-shadow 0.2s;
   }
   .edu-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+  .edu-left {
+    background: var(--cream);
+    border-right: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 24px;
+  }
+  .edu-logo {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    mix-blend-mode: multiply;
+  }
+  .edu-right {
+    padding: 28px 32px;
+  }
   .edu-school {
     font-family: 'EB Garamond', serif;
     font-size: 20px;
     font-weight: 500;
     line-height: 1.25;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
+  }
+  .edu-location {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 14px;
   }
   .edu-degree {
     font-size: 13px;
@@ -133,7 +160,7 @@
     background: var(--accent-light);
     padding: 3px 9px;
     border-radius: 2px;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
   }
   .edu-divider {
     height: 1px;
@@ -144,19 +171,6 @@
     font-size: 12.5px;
     color: var(--muted);
     line-height: 1.65;
-  }
-  .edu-logo {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    margin-bottom: 16px;
-    border-radius: 6px;
-  }
-  .edu-location {
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 12px;
-    margin-top: -2px;
   }
 
   /* Honor cards */
@@ -313,7 +327,7 @@
       <div class="exp-left">
         <div class="company">Theta Tau — Kappa Epsilon Chapter</div>
         <div class="location">USC · Science and Technology</div>
-        <div class="date-pill">May 2024 – May 2025</div>
+        <div class="date-pill-gold">May 2024 – May 2025</div>
         <img src="images/theta-tau-logo.png" alt="Theta Tau" class="exp-logo">
       </div>
       <div class="exp-right">
@@ -338,7 +352,7 @@
       <div class="exp-left">
         <div class="company">Engineers Without Borders — USC Chapter</div>
         <div class="location">Human Rights</div>
-        <div class="date-pill">Sep 2025 – Present</div>
+        <div class="date-pill-gold">Sep 2025 – Present</div>
         <img src="images/ewb-logo.png" alt="Engineers Without Borders" class="exp-logo">
       </div>
       <div class="exp-right">
@@ -356,42 +370,58 @@
   <div class="edu-grid">
     <!-- USC — combined BS + MS -->
     <div class="edu-card">
-      <img src="images/usc-logo.png" alt="USC" class="edu-logo">
-      <div class="edu-school">University of Southern California</div>
-      <div class="edu-location">Los Angeles, CA</div>
-      <div class="edu-degree">Bachelor of Science — Biomedical Engineering (Mechanical Emphasis)<br>Jan 2024 – May 2027</div>
-      <div class="edu-gpa">GPA 3.66</div>
-      <div class="edu-divider"></div>
-      <div class="edu-degree" style="margin-bottom:14px;">Master of Science — Mechanical Engineering (AI &amp; Machine Learning Emphasis)<br>Aug 2026 – Dec 2027</div>
-      <div class="edu-activities">Activities: Theta Tau · Engineers Without Borders · MEDesign · Ski Team · Brazilian Jiu-Jitsu</div>
+      <div class="edu-left">
+        <img src="images/usc-logo.png" alt="USC" class="edu-logo">
+      </div>
+      <div class="edu-right">
+        <div class="edu-school">University of Southern California</div>
+        <div class="edu-location">Los Angeles, CA</div>
+        <div class="edu-degree">Bachelor of Science — Biomedical Engineering (Mechanical Emphasis)<br>Jan 2024 – May 2027</div>
+        <div class="edu-gpa">GPA 3.66</div>
+        <div class="edu-divider"></div>
+        <div class="edu-degree" style="margin-bottom:14px;">Master of Science — Mechanical Engineering (AI &amp; Machine Learning Emphasis)<br>Aug 2026 – Dec 2027</div>
+        <div class="edu-activities">Activities: Theta Tau · Engineers Without Borders · MEDesign · Ski Team · Brazilian Jiu-Jitsu</div>
+      </div>
     </div>
 
     <!-- INSEAD -->
     <div class="edu-card">
-      <img src="images/insead-logo.png" alt="INSEAD" class="edu-logo">
-      <div class="edu-school">INSEAD Business School</div>
-      <div class="edu-location">Fontainebleau, France</div>
-      <div class="edu-degree">Summer Business Program<br>Jul 2022 – Aug 2022</div>
+      <div class="edu-left">
+        <img src="images/insead-logo.png" alt="INSEAD" class="edu-logo">
+      </div>
+      <div class="edu-right">
+        <div class="edu-school">INSEAD Business School</div>
+        <div class="edu-location">Fontainebleau, France</div>
+        <div class="edu-degree">Summer Business Program<br>Jul 2022 – Aug 2022</div>
+      </div>
     </div>
 
     <!-- AAU -->
     <div class="edu-card">
-      <img src="images/aau-logo.png" alt="Anglo-American University" class="edu-logo">
-      <div class="edu-school">Anglo-American University</div>
-      <div class="edu-location">Prague, Czechia</div>
-      <div class="edu-degree">Study Abroad Exchange Program<br>Aug 2023 – Dec 2023</div>
-      <div class="edu-activities">Activities: Climbing Club</div>
+      <div class="edu-left">
+        <img src="images/aau-logo.png" alt="Anglo-American University" class="edu-logo">
+      </div>
+      <div class="edu-right">
+        <div class="edu-school">Anglo-American University</div>
+        <div class="edu-location">Prague, Czechia</div>
+        <div class="edu-degree">Study Abroad Exchange Program<br>Aug 2023 – Dec 2023</div>
+        <div class="edu-activities">Activities: Climbing Club</div>
+      </div>
     </div>
 
     <!-- VHS -->
     <div class="edu-card">
-      <img src="images/vhs-logo.png" alt="Ventura High School" class="edu-logo">
-      <div class="edu-school">Ventura High School</div>
-      <div class="edu-location">Ventura, CA</div>
-      <div class="edu-degree">High School Diploma<br>Feb 2022 – Jun 2023</div>
-      <div class="edu-gpa" style="display:block;margin-bottom:6px;">GPA 4.493</div>
-      <div class="edu-gpa" style="display:block;margin-bottom:14px;">Summa Cum Laude</div>
-      <div class="edu-activities">Activities: Casitas Rowing</div>
+      <div class="edu-left">
+        <img src="images/vhs-logo.png" alt="Ventura High School" class="edu-logo">
+      </div>
+      <div class="edu-right">
+        <div class="edu-school">Ventura High School</div>
+        <div class="edu-location">Ventura, CA</div>
+        <div class="edu-degree">High School Diploma<br>Feb 2022 – Jun 2023</div>
+        <div class="edu-gpa" style="display:block;margin-bottom:6px;">GPA 4.493</div>
+        <div class="edu-gpa" style="display:block;margin-bottom:14px;">Summa Cum Laude</div>
+        <div class="edu-activities">Activities: Casitas Rowing</div>
+      </div>
     </div>
   </div>
 
