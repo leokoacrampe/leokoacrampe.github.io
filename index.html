@@ -107,11 +107,50 @@
   }
   .stat-card.download-cv .stat-label { text-align: center; }
 
+  /* Degree card */
+  .degree-card {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 22px 26px;
+    margin: 28px 0 0;
+  }
+  .degree-card-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .degree-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .degree-box {
+    background: var(--cream);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 14px 16px;
+  }
+  .degree-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+  .degree-sub {
+    font-size: 11.5px;
+    color: var(--muted);
+  }
+
   @media (max-width: 720px) {
     .about-grid { grid-template-columns: 1fr; gap: 32px; }
     .about-left { position: static; }
     .photo-frame { max-width: 180px; aspect-ratio: 1/1; }
     .stats-row { grid-template-columns: 1fr; }
+    .degree-row { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -130,7 +169,7 @@
 
 <main>
   <p class="page-title">About</p>
-  <p class="page-subtitle">Biomedical Engineer · USC Viterbi · Class of 2027</p>
+  <p class="page-subtitle">Student at the University of Southern California</p>
   <div class="about-grid">
 
     <!-- LEFT COLUMN -->
@@ -165,13 +204,24 @@
 
     <!-- RIGHT COLUMN -->
     <div class="about-right">
-      <p class="about-intro">Building devices that help people in real, tangible ways.</p>
+      <p>Welcome to my portfolio page!</p>
 
-      <p>I'm a biomedical engineering student at USC, drawn to hands-on work at the intersection of engineering and medicine. I'm especially interested in medical devices, where thoughtful design and problem solving can directly improve lives. That's the kind of work I want to be part of.</p>
+      <p>Feel free to navigate the website to better understand my engineering background!</p>
 
-      <p>I kicked off my career with an internship at Zimmer Biomet in Québec, where I worked in French as part of a dynamic, cross-functional team testing the ROSA robotic knee system. I've also studied abroad in Prague, driven by a genuine curiosity to experience cultures and ways of thinking beyond my own. These opportunities taught me how to adapt quickly, collaborate across differences, and stay flexible in the face of change.</p>
-
-      <p>From systems design to hands-on prototyping, I'm most excited when the work is practical, people-focused, and a little unpredictable. I'm always ready to dive in, figure things out, and contribute wherever I can make a difference.</p>
+      <!-- Degree card -->
+      <div class="degree-card">
+        <div class="degree-card-title">University of Southern California</div>
+        <div class="degree-row">
+          <div class="degree-box">
+            <div class="degree-label">M.S. in Mechanical Engineering</div>
+            <div class="degree-sub">Emphasis in AI &amp; Machine Learning</div>
+          </div>
+          <div class="degree-box">
+            <div class="degree-label">B.S. in Biomedical Engineering</div>
+            <div class="degree-sub">Emphasis in Mechanical Engineering</div>
+          </div>
+        </div>
+      </div>
 
       <div class="page-nav">
         <a href="experience.html" class="btn primary">View Experience →</a>

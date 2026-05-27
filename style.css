@@ -192,7 +192,7 @@ main {
 .project-media.single-col { grid-template-columns: 1fr; }
 
 .img-block {
-  height: 185px;
+  height: 230px;
   overflow: hidden;
   background: #f0eeea;
   display: flex;
