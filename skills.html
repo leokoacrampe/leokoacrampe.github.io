@@ -7,71 +7,27 @@
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-  /* ── SKILL CARDS — same border/radius/hover as project cards ── */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  .skills-grid .full { grid-column: 1 / -1; }
-
-  .skill-card {
+  .chart-wrap {
+    width: 100%;
+    overflow-x: auto;
+    margin: 32px 0 20px;
     background: var(--card-bg);
     border: 1px solid var(--rule);
     border-radius: 4px;
-    padding: 28px 30px;
-    transition: box-shadow 0.2s;
   }
-  .skill-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+  #skills-svg {
+    display: block;
+    width: 100%;
+    min-width: 700px;
+  }
+  .bubble-node { cursor: default; }
+  .bubble-node circle { transition: opacity 0.18s; }
+  .bubble-node:hover circle { opacity: 0.82; }
 
-  .skill-card-title {
-    font-family: 'EB Garamond', serif;
-    font-size: 20px;
-    font-weight: 500;
-    margin-bottom: 20px;
-    line-height: 1.2;
-  }
-
-  .skill-cluster { margin-bottom: 16px; }
-  .skill-cluster:last-child { margin-bottom: 0; }
-  .cluster-label {
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--muted);
-    font-weight: 500;
-    margin-bottom: 8px;
-  }
-
-  /* Proficiency bars */
-  .bar-list { display: flex; flex-direction: column; gap: 11px; }
-  .bar-item { }
-  .bar-meta {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    margin-bottom: 5px;
-    color: var(--ink);
-  }
-  .bar-meta span:last-child { font-size: 11px; color: var(--muted); }
-  .bar-track {
-    height: 3px;
-    background: var(--tag-bg);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .bar-fill {
-    height: 100%;
-    background: var(--accent);
-    border-radius: 2px;
-    opacity: 0.65;
-  }
-
-  /* Language row */
+  /* Languages card below chart */
   .lang-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
   .lang-card {
-    flex: 1;
-    min-width: 130px;
+    flex: 1; min-width: 130px;
     border: 1px solid var(--rule);
     border-radius: 4px;
     padding: 18px 20px;
@@ -81,41 +37,19 @@
   .lang-flag { font-size: 26px; display: block; margin-bottom: 7px; }
   .lang-name { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
   .lang-level { font-size: 12px; color: var(--muted); }
-
-  /* Orgs list */
-  .org-list { display: flex; flex-direction: column; gap: 2px; }
-  .org-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    padding: 12px 16px;
-    border-radius: 3px;
-    background: var(--cream);
+  .skill-card {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 28px 30px;
+    transition: box-shadow 0.2s;
+    margin-bottom: 20px;
   }
-  .org-item:hover { background: var(--tag-bg); }
-  .org-name { font-size: 13.5px; font-weight: 500; color: var(--ink); }
-  .org-sub { font-size: 12px; color: var(--muted); margin-top: 1px; }
-  .org-date { font-size: 11px; color: var(--muted); white-space: nowrap; letter-spacing: 0.02em; }
-
-  /* Cert item */
-  .cert-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--rule);
-  }
-  .cert-item:last-child { border-bottom: none; padding-bottom: 0; }
-  .cert-name { font-size: 14px; font-weight: 500; color: var(--ink); }
-  .cert-issuer { font-size: 12px; color: var(--muted); margin-top: 2px; }
-  .cert-date { font-size: 11px; color: var(--muted); white-space: nowrap; }
-
-  @media (max-width: 720px) {
-    .skills-grid { grid-template-columns: 1fr; }
-    .skills-grid .full { grid-column: 1; }
-    .lang-row { flex-direction: column; }
+  .skill-card-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 20px;
   }
 </style>
 </head>
@@ -134,167 +68,277 @@
 
 <main>
   <p class="page-title">Skills</p>
-  <p class="page-subtitle">Technical toolkit, languages, and professional certifications</p>
+  <p class="page-subtitle">Technical toolkit across mechanical, electrical, software, and biomedical engineering</p>
 
-  <div class="skills-grid">
+  <div class="chart-wrap">
+    <svg id="skills-svg" viewBox="-120 -120 1340 920" preserveAspectRatio="xMidYMid meet"></svg>
+  </div>
 
-    <!-- ── CAD & DESIGN ── -->
-    <div class="skill-card">
-      <div class="skill-card-title">CAD &amp; Design</div>
-      <div class="skill-cluster">
-        <div class="cluster-label">Proficient</div>
-        <div class="tags" style="margin-top:0;">
-          <span class="tag highlight">SolidWorks</span>
-          <span class="tag highlight">Siemens NX</span>
-          <span class="tag highlight">Fusion 360</span>
-          <span class="tag highlight">AutoCAD</span>
-        </div>
+  <!-- Languages -->
+  <div class="skill-card">
+    <div class="skill-card-title">Languages</div>
+    <div class="lang-row">
+      <div class="lang-card">
+        <span class="lang-flag">🇺🇸</span>
+        <div class="lang-name">English</div>
+        <div class="lang-level">Native / Bilingual</div>
       </div>
-      <div class="skill-cluster">
-        <div class="cluster-label">Experienced</div>
-        <div class="tags" style="margin-top:0;">
-          <span class="tag">PTC Creo</span>
-          <span class="tag">CATIA V5</span>
-          <span class="tag">TinkerCAD</span>
-          <span class="tag">Revit</span>
-          <span class="tag">ICIDO</span>
-          <span class="tag">ENOVIA</span>
-        </div>
-      </div>
-      <div class="skill-cluster">
-        <div class="cluster-label">Methods</div>
-        <div class="tags" style="margin-top:0;">
-          <span class="tag">FEA</span>
-          <span class="tag">GD&amp;T</span>
-          <span class="tag">DFMA</span>
-          <span class="tag">3D Printing</span>
-          <span class="tag">Waterjet Cutting</span>
-        </div>
+      <div class="lang-card">
+        <span class="lang-flag">🇫🇷</span>
+        <div class="lang-name">French</div>
+        <div class="lang-level">Native / Bilingual</div>
       </div>
     </div>
-
-    <!-- ── PROGRAMMING ── -->
-    <div class="skill-card">
-      <div class="skill-card-title">Programming</div>
-      <div class="bar-list">
-        <div class="bar-item">
-          <div class="bar-meta"><span>Python</span><span>Proficient</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
-        </div>
-        <div class="bar-item">
-          <div class="bar-meta"><span>MATLAB</span><span>Proficient</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:78%"></div></div>
-        </div>
-        <div class="bar-item">
-          <div class="bar-meta"><span>Arduino IDE / C++</span><span>Proficient</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:75%"></div></div>
-        </div>
-        <div class="bar-item">
-          <div class="bar-meta"><span>Microsoft Excel</span><span>Advanced</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:85%"></div></div>
-        </div>
-        <div class="bar-item">
-          <div class="bar-meta"><span>Java</span><span>Experienced</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:55%"></div></div>
-        </div>
-        <div class="bar-item">
-          <div class="bar-meta"><span>LabVIEW</span><span>Experienced</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:50%"></div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── ELECTRONICS ── -->
-    <div class="skill-card">
-      <div class="skill-card-title">Electronics &amp; Instrumentation</div>
-      <div class="skill-cluster">
-        <div class="cluster-label">Electronics</div>
-        <div class="tags" style="margin-top:0;">
-          <span class="tag highlight">KiCad</span>
-          <span class="tag highlight">LTspice</span>
-          <span class="tag">PCB Design</span>
-          <span class="tag">Soldering</span>
-          <span class="tag">Oscilloscope</span>
-          <span class="tag">Analog Circuits</span>
-        </div>
-      </div>
-      <div class="skill-cluster">
-        <div class="cluster-label">Sensors &amp; Hardware</div>
-        <div class="tags" style="margin-top:0;">
-          <span class="tag">Accelerometer</span>
-          <span class="tag">Gyroscope</span>
-          <span class="tag">Strain Gauge</span>
-          <span class="tag">Load Cell</span>
-          <span class="tag">Thermocouple</span>
-          <span class="tag">Pitot Tube</span>
-        </div>
-      </div>
-      <div class="skill-cluster">
-        <div class="cluster-label">Other</div>
-        <div class="tags" style="margin-top:0;">
-          <span class="tag">Welding</span>
-          <span class="tag">FTIR</span>
-          <span class="tag">Digital Signal Processing</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── BIOMEDICAL & REGULATORY ── -->
-    <div class="skill-card">
-      <div class="skill-card-title">Biomedical &amp; Regulatory</div>
-      <div class="skill-cluster">
-        <div class="cluster-label">Regulatory &amp; Quality</div>
-        <div class="tags" style="margin-top:0;">
-          <span class="tag highlight">ISO 13485 QMS</span>
-          <span class="tag highlight">FDA DVeP &amp; DVeR</span>
-          <span class="tag">GMP</span>
-          <span class="tag">QA</span>
-          <span class="tag">DFMEA</span>
-          <span class="tag">RCA</span>
-        </div>
-      </div>
-      <div class="skill-cluster">
-        <div class="cluster-label">Molecular Biology</div>
-        <div class="tags" style="margin-top:0;">
-          <span class="tag">PCR</span>
-          <span class="tag">Gel Electrophoresis</span>
-          <span class="tag">Cell Culture</span>
-          <span class="tag">Plasmid Purification</span>
-          <span class="tag">Pipetting</span>
-        </div>
-      </div>
-      <div class="skill-cluster">
-        <div class="cluster-label">Simulation</div>
-        <div class="tags" style="margin-top:0;">
-          <span class="tag">Minitab</span>
-          <span class="tag">Computational Modeling</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── LANGUAGES (full width) ── -->
-    <div class="skill-card full">
-      <div class="skill-card-title">Languages</div>
-      <div class="lang-row">
-        <div class="lang-card">
-          <span class="lang-flag">🇺🇸</span>
-          <div class="lang-name">English</div>
-          <div class="lang-level">Native / Bilingual</div>
-        </div>
-        <div class="lang-card">
-          <span class="lang-flag">🇫🇷</span>
-          <div class="lang-name">French</div>
-          <div class="lang-level">Native / Bilingual</div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <div class="page-nav">
     <a href="cv.html" class="btn primary">View CV →</a>
   </div>
 </main>
+
+<script>
+// ── TREE DATA ──────────────────────────────────────────────────────────────
+// catAngle: degrees from center (0=right, 90=down, 180=left, 270=up in SVG)
+// childSpread: angular spread (°) across children
+// childDist: distance from parent to child centers
+
+const TREE = {
+  name: "Skills", r: 82, fill: "#e8e5df", textFill: "#1a1a18",
+  children: [
+    {
+      name: "Mechanical", r: 70, fill: "#e8a87c", textFill: "#4a2000",
+      catAngle: 230, catDist: 218,
+      childSpread: 118, childDist: 138,
+      children: [
+        { name: "CAD", r: 44, childSpread: 88, childDist: 90,
+          children: [
+            { name: "SolidWorks",   r: 26 },
+            { name: "Siemens NX",   r: 24 },
+            { name: "Fusion 360",   r: 26 },
+            { name: "AutoCAD",      r: 24 },
+            { name: "PTC Creo",     r: 24 },
+            { name: "CATIA V5",     r: 24 },
+            { name: "ENOVIA",       r: 22 }
+          ]
+        },
+        { name: "Design", r: 36, childSpread: 72, childDist: 86,
+          children: [
+            { name: "FEA",   r: 22 },
+            { name: "GD&T",  r: 22 },
+            { name: "DFMA",  r: 22 }
+          ]
+        },
+        { name: "Analysis", r: 34, childSpread: 70, childDist: 86,
+          children: [
+            { name: "DFMEA", r: 23 },
+            { name: "RCA",   r: 20 }
+          ]
+        }
+      ]
+    },
+    {
+      name: "Lab", r: 60, fill: "#c3a8e8", textFill: "#2e0a5a",
+      catAngle: 308, catDist: 218,
+      childSpread: 100, childDist: 132,
+      children: [
+        { name: "Testing", r: 36, childSpread: 86, childDist: 90,
+          children: [
+            { name: "Instron",      r: 22 },
+            { name: "Pitot Tube",   r: 25 },
+            { name: "Thermocouple", r: 27 },
+            { name: "Strain Gauge", r: 27 },
+            { name: "DSP",          r: 20 }
+          ]
+        },
+        { name: "Fabrication", r: 34, childSpread: 80, childDist: 88,
+          children: [
+            { name: "3D Printing",     r: 26 },
+            { name: "Waterjet Cutting", r: 28 },
+            { name: "Welding",         r: 22 },
+            { name: "FTIR",            r: 20 }
+          ]
+        }
+      ]
+    },
+    {
+      name: "Software", r: 62, fill: "#85b8d4", textFill: "#0e2d42",
+      catAngle: 148, catDist: 218,
+      childSpread: 154, childDist: 142,
+      children: [
+        { name: "Python",        r: 28 },
+        { name: "MATLAB",        r: 28 },
+        { name: "C++ / Arduino", r: 30 },
+        { name: "Java",          r: 24 },
+        { name: "LabVIEW",       r: 24 },
+        { name: "Excel",         r: 24 }
+      ]
+    },
+    {
+      name: "Biomedical", r: 62, fill: "#82c882", textFill: "#0e3a0e",
+      catAngle: 46, catDist: 218,
+      childSpread: 106, childDist: 132,
+      children: [
+        { name: "Regulatory", r: 36, childSpread: 76, childDist: 88,
+          children: [
+            { name: "ISO 13485",      r: 26 },
+            { name: "FDA DVeP & DVeR", r: 28 },
+            { name: "GMP / QA",        r: 24 }
+          ]
+        },
+        { name: "Molecular Bio", r: 34, childSpread: 88, childDist: 90,
+          children: [
+            { name: "PCR",               r: 20 },
+            { name: "Gel Electrophoresis", r: 30 },
+            { name: "Cell Culture",        r: 26 },
+            { name: "Pipetting",           r: 22 }
+          ]
+        }
+      ]
+    },
+    {
+      name: "Electrical", r: 64, fill: "#f5d76e", textFill: "#3a2d00",
+      catAngle: 356, catDist: 218,
+      childSpread: 106, childDist: 132,
+      children: [
+        { name: "Electronics", r: 36, childSpread: 88, childDist: 90,
+          children: [
+            { name: "KiCad",        r: 22 },
+            { name: "LTspice",      r: 24 },
+            { name: "PCB Design",   r: 26 },
+            { name: "Soldering",    r: 24 },
+            { name: "Oscilloscope", r: 28 }
+          ]
+        },
+        { name: "Sensors", r: 33, childSpread: 84, childDist: 88,
+          children: [
+            { name: "Accelerometer",  r: 28 },
+            { name: "Gyroscope",      r: 25 },
+            { name: "Load Cell",      r: 25 },
+            { name: "Analog Circuits", r: 28 }
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+// ── LAYOUT ─────────────────────────────────────────────────────────────────
+const CX = 550, CY = 360;
+TREE.x = CX; TREE.y = CY;
+
+function placeChildren(parent, outAngle, spread, dist) {
+  if (!parent.children) return;
+  const n = parent.children.length;
+  parent.children.forEach((child, i) => {
+    const offset = n === 1 ? 0 : (i / (n - 1) - 0.5) * spread;
+    const angle  = outAngle + offset;
+    const rad    = angle * Math.PI / 180;
+    child.x = parent.x + dist * Math.cos(rad);
+    child.y = parent.y + dist * Math.sin(rad);
+    child.fill     = child.fill     || parent.fill;
+    child.textFill = child.textFill || parent.textFill;
+    child._angle   = angle;
+    placeChildren(child, angle, child.childSpread || 88, child.childDist || 88);
+  });
+}
+
+TREE.children.forEach(cat => {
+  const rad = cat.catAngle * Math.PI / 180;
+  cat.x = CX + cat.catDist * Math.cos(rad);
+  cat.y = CY + cat.catDist * Math.sin(rad);
+  placeChildren(cat, cat.catAngle, cat.childSpread, cat.childDist);
+});
+
+// ── RENDER ─────────────────────────────────────────────────────────────────
+const svg = document.getElementById('skills-svg');
+const NS  = 'http://www.w3.org/2000/svg';
+
+function svgEl(tag, attrs) {
+  const e = document.createElementNS(NS, tag);
+  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+  return e;
+}
+
+// Draw all connector lines first (behind circles)
+function drawLines(node) {
+  if (!node.children) return;
+  node.children.forEach(child => {
+    svg.appendChild(svgEl('line', {
+      x1: node.x, y1: node.y, x2: child.x, y2: child.y,
+      stroke: '#ccc', 'stroke-width': '1.5', 'stroke-linecap': 'round'
+    }));
+    drawLines(child);
+  });
+}
+drawLines(TREE);
+
+// Split text into 1 or 2 lines that fit comfortably in a circle
+function splitText(name) {
+  const words = name.split(' ');
+  if (words.length <= 1) return [name];
+  // Find the split that balances line lengths
+  let best = 1, bestDiff = Infinity;
+  let running = 0;
+  const total = name.length;
+  for (let i = 0; i < words.length - 1; i++) {
+    running += words[i].length + 1;
+    const diff = Math.abs(running - total / 2);
+    if (diff < bestDiff) { bestDiff = diff; best = i + 1; }
+  }
+  return [words.slice(0, best).join(' '), words.slice(best).join(' ')];
+}
+
+function drawNode(node, isRoot) {
+  const g = svgEl('g', { class: 'bubble-node', transform: `translate(${node.x},${node.y})` });
+
+  // Circle
+  const circle = svgEl('circle', {
+    cx: 0, cy: 0, r: node.r,
+    fill: node.fill || '#e8e5df',
+    stroke: 'white',
+    'stroke-width': '2.5'
+  });
+  g.appendChild(circle);
+
+  // Font size scales with circle radius
+  const fs = isRoot ? 18 : node.r >= 55 ? 14 : node.r >= 38 ? 12 : node.r >= 28 ? 10 : 9;
+  const fw = node.r >= 38 ? '600' : '500';
+  const lines = splitText(node.name);
+
+  const textEl = svgEl('text', {
+    'text-anchor': 'middle',
+    'font-family': 'DM Sans, sans-serif',
+    'font-size': fs,
+    'font-weight': fw,
+    fill: node.textFill || '#1a1a18',
+    'pointer-events': 'none'
+  });
+
+  if (lines.length === 1) {
+    textEl.setAttribute('dominant-baseline', 'central');
+    textEl.textContent = lines[0];
+  } else {
+    const dy0 = -(fs * 0.62);
+    const dy1 =   fs * 1.18;
+    const t1 = svgEl('tspan', { x: 0, dy: dy0 });
+    t1.textContent = lines[0];
+    const t2 = svgEl('tspan', { x: 0, dy: dy1 });
+    t2.textContent = lines[1];
+    textEl.appendChild(t1);
+    textEl.appendChild(t2);
+  }
+
+  g.appendChild(textEl);
+  svg.appendChild(g);
+}
+
+// Draw nodes (root first, so it sits on top of everything)
+function drawAllNodes(node, isRoot) {
+  if (node.children) node.children.forEach(c => drawAllNodes(c, false));
+  drawNode(node, isRoot);
+}
+drawAllNodes(TREE, true);
+</script>
 
 </body>
 </html>
