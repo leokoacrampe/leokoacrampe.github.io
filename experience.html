@@ -61,6 +61,13 @@
     margin-top: 10px;
     width: fit-content;
   }
+  .exp-logo {
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    margin-top: 16px;
+    border-radius: 6px;
+  }
 
   /* Right content */
   .exp-right {
@@ -112,6 +119,11 @@
     padding: 3px 9px;
     border-radius: 2px;
     margin-bottom: 14px;
+  }
+  .edu-divider {
+    height: 1px;
+    background: var(--rule);
+    margin: 16px 0;
   }
   .edu-activities {
     font-size: 12.5px;
@@ -183,7 +195,6 @@
 
 <main>
   <p class="page-title">Experience</p>
-  <p class="page-subtitle">Engineering roles, research, and leadership — 2021 to present</p>
 
   <!-- ══ WORK ══ -->
   <div class="section-divider"><span>Work</span></div>
@@ -195,6 +206,7 @@
         <div class="company">Zimmer Biomet</div>
         <div class="location">Montreal, QC, Canada · On-site</div>
         <div class="date-pill">May 2025 – Aug 2025</div>
+        <img src="images/zimmer-logo.png" alt="Zimmer Biomet" class="exp-logo">
       </div>
       <div class="exp-right">
         <div class="exp-role">Systems Designer Intern</div>
@@ -206,10 +218,10 @@
         <div class="tags">
           <span class="tag highlight">SolidWorks</span>
           <span class="tag highlight">ISO 13485</span>
-          <span class="tag">System Testing</span>
-          <span class="tag">FDA Documentation</span>
-          <span class="tag">Biomechanics</span>
-          <span class="tag">VBA Macro</span>
+          <span class="tag highlight">Verification and Validation Testing</span>
+          <span class="tag highlight">FDA Documentation</span>
+          <span class="tag highlight">Biomechanics</span>
+          <span class="tag highlight">SolidWorks Macro</span>
         </div>
       </div>
     </div>
@@ -222,6 +234,7 @@
         <div class="company">NeuroSense</div>
         <div class="location">Los Angeles, CA · Self-employed</div>
         <div class="date-pill">Sep 2025 – Present</div>
+        <img src="images/neurosense-logo.png" alt="NeuroSense" class="exp-logo">
       </div>
       <div class="exp-right">
         <div class="exp-role">Co-Founder</div>
@@ -232,26 +245,9 @@
         <div class="tags">
           <span class="tag highlight">Arduino</span>
           <span class="tag highlight">Clinical Research</span>
-          <span class="tag">Medical Device Design</span>
-          <span class="tag">Entrepreneurship</span>
+          <span class="tag highlight">Medical Device Design</span>
+          <span class="tag highlight">Entrepreneurship</span>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- CESR -->
-  <div class="exp-card">
-    <div class="exp-card-inner">
-      <div class="exp-left">
-        <div class="company">Center for Economic and Social Research</div>
-        <div class="location">Los Angeles, CA · Part-time · On-site</div>
-        <div class="date-pill">Mar 2026 – Present</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-role">Mailing Support Assistant</div>
-        <ul class="bullet-list">
-          <li>Supports survey and research mailing operations for a leading social science research center at USC.</li>
-        </ul>
       </div>
     </div>
   </div>
@@ -260,9 +256,10 @@
   <div class="exp-card">
     <div class="exp-card-inner">
       <div class="exp-left">
-        <div class="company">Dept. of Defense, NAVSEA</div>
+        <div class="company">Department of Defense, NAVSEA</div>
         <div class="location">Port Hueneme, CA · On-site</div>
         <div class="date-pill">Aug 2022 – Dec 2022</div>
+        <img src="images/navsea-logo.png" alt="NAVSEA" class="exp-logo">
       </div>
       <div class="exp-right">
         <div class="exp-role">Student Engineer</div>
@@ -271,32 +268,9 @@
           <li>Prototyped initial designs for 20+ rockets using CAD, 3D printing, and military equipment in a defense engineering environment.</li>
         </ul>
         <div class="tags">
-          <span class="tag">CAD</span>
-          <span class="tag">3D Printing</span>
-          <span class="tag">Data Analysis</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- INSEAD -->
-  <div class="exp-card">
-    <div class="exp-card-inner">
-      <div class="exp-left">
-        <div class="company">INSEAD Business School</div>
-        <div class="location">Fontainebleau, France</div>
-        <div class="date-pill">Jul 2022 – Aug 2022</div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-role">Chief Operating Officer — Summer Program</div>
-        <ul class="bullet-list">
-          <li>Led as COO of a 6-member team in a simulated bicycle company, streamlining manufacturing by reducing design cost by 30% through risk analysis and mitigation strategies.</li>
-          <li>Established bold manufacturing and rebranding changes to differentiate from competitors and drive innovation.</li>
-        </ul>
-        <div class="tags">
-          <span class="tag">Operations Management</span>
-          <span class="tag">Public Speaking</span>
-          <span class="tag">Risk Analysis</span>
+          <span class="tag highlight">CAD</span>
+          <span class="tag highlight">3D Printing</span>
+          <span class="tag highlight">Data Analysis</span>
         </div>
       </div>
     </div>
@@ -312,6 +286,7 @@
         <div class="company">Theta Tau — Kappa Epsilon Chapter</div>
         <div class="location">USC · Science and Technology</div>
         <div class="date-pill">May 2024 – May 2025</div>
+        <img src="images/theta-tau-logo.png" alt="Theta Tau" class="exp-logo">
       </div>
       <div class="exp-right">
         <div class="exp-role">Social Chair &amp; New Member Educator</div>
@@ -336,6 +311,7 @@
         <div class="company">Engineers Without Borders — USC Chapter</div>
         <div class="location">Human Rights</div>
         <div class="date-pill">Sep 2025 – Present</div>
+        <img src="images/ewb-logo.png" alt="Engineers Without Borders" class="exp-logo">
       </div>
       <div class="exp-right">
         <div class="exp-role">Bolivia Project Team Member</div>
@@ -350,22 +326,32 @@
   <div class="section-divider"><span>Education</span></div>
 
   <div class="edu-grid">
+    <!-- USC — combined BS + MS -->
     <div class="edu-card">
       <div class="edu-school">University of Southern California</div>
       <div class="edu-degree">Bachelor of Science — Biomedical Engineering (Mechanical Emphasis)<br>Jan 2024 – May 2027</div>
       <div class="edu-gpa">GPA 3.66 / 4.00</div>
-      <div class="edu-activities">Dean's List (3×) · ASBME Make-a-thon 2nd Place · Theta Tau · Engineers Without Borders · MEDesign · Ski Team · Brazilian Jiu-Jitsu</div>
+      <div class="edu-divider"></div>
+      <div class="edu-degree" style="margin-bottom:6px;">Master of Science — Mechanical Engineering (AI &amp; Machine Learning Emphasis)<br>May 2026 – Dec 2027</div>
+      <div class="edu-activities" style="margin-bottom:14px;">Concurrent with BS program</div>
+      <div class="edu-activities">Theta Tau · Engineers Without Borders · MEDesign · Ski Team · Brazilian Jiu-Jitsu</div>
     </div>
+
+    <!-- INSEAD -->
     <div class="edu-card">
-      <div class="edu-school">USC Viterbi School of Engineering</div>
-      <div class="edu-degree">Master of Science — Mechanical Engineering (AI &amp; Machine Learning Emphasis)<br>May 2026 – Dec 2027</div>
-      <div class="edu-activities">Concurrent with BS program</div>
+      <div class="edu-school">INSEAD Business School</div>
+      <div class="edu-degree">Summer Business Program<br>Jul 2022 – Aug 2022</div>
+      <div class="edu-activities">Fontainebleau, France · Led as COO of a 6-member team in a simulated business venture, reducing design cost by 30% through risk analysis and mitigation strategies.</div>
     </div>
+
+    <!-- AAU -->
     <div class="edu-card">
       <div class="edu-school">Anglo-American University, Prague</div>
       <div class="edu-degree">Study Abroad Exchange Program<br>Aug 2023 – Dec 2023</div>
       <div class="edu-activities">Activities: Climbing Club</div>
     </div>
+
+    <!-- VHS -->
     <div class="edu-card">
       <div class="edu-school">Ventura High School</div>
       <div class="edu-degree">High School Diploma<br>Feb 2022 – Jun 2023</div>
