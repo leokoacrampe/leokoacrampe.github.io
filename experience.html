@@ -62,11 +62,26 @@
     width: fit-content;
   }
   .exp-logo {
-    width: 72px;
-    height: 72px;
+    width: 100%;
+    max-width: 160px;
+    height: auto;
     object-fit: contain;
-    margin-top: 16px;
+    margin-top: 20px;
     border-radius: 6px;
+  }
+  .date-pill-gold {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7a5200;
+    background: #fdf3dc;
+    border: 1px solid #f0d88a;
+    padding: 3px 9px;
+    border-radius: 2px;
+    margin-top: 10px;
+    width: fit-content;
   }
 
   /* Right content */
@@ -136,6 +151,12 @@
     object-fit: contain;
     margin-bottom: 16px;
     border-radius: 6px;
+  }
+  .edu-location {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    margin-top: -2px;
   }
 
   /* Honor cards */
@@ -212,7 +233,7 @@
       <div class="exp-left">
         <div class="company">Zimmer Biomet</div>
         <div class="location">Montreal, QC, Canada · On-site</div>
-        <div class="date-pill">May 2025 – Aug 2025</div>
+        <div class="date-pill-gold">May 2025 – Aug 2025</div>
         <img src="images/zimmer-logo.png" alt="Zimmer Biomet" class="exp-logo">
       </div>
       <div class="exp-right">
@@ -240,7 +261,7 @@
       <div class="exp-left">
         <div class="company">NeuroSense</div>
         <div class="location">Los Angeles, CA · Self-employed</div>
-        <div class="date-pill">Sep 2025 – Present</div>
+        <div class="date-pill-gold">Sep 2025 – Present</div>
         <img src="images/neurosense-logo.png" alt="NeuroSense" class="exp-logo">
       </div>
       <div class="exp-right">
@@ -265,7 +286,7 @@
       <div class="exp-left">
         <div class="company">Department of Defense, NAVSEA</div>
         <div class="location">Port Hueneme, CA · On-site</div>
-        <div class="date-pill">Aug 2022 – Dec 2022</div>
+        <div class="date-pill-gold">Aug 2022 – Dec 2022</div>
         <img src="images/navsea-logo.png" alt="NAVSEA" class="exp-logo">
       </div>
       <div class="exp-right">
@@ -337,29 +358,28 @@
     <div class="edu-card">
       <img src="images/usc-logo.png" alt="USC" class="edu-logo">
       <div class="edu-school">University of Southern California</div>
-      <div class="edu-degree">Los Angeles, CA</div>
+      <div class="edu-location">Los Angeles, CA</div>
       <div class="edu-degree">Bachelor of Science — Biomedical Engineering (Mechanical Emphasis)<br>Jan 2024 – May 2027</div>
-      <div class="edu-gpa">GPA 3.66 / 4.00</div>
+      <div class="edu-gpa">GPA 3.66</div>
       <div class="edu-divider"></div>
-      <div class="edu-degree" style="margin-bottom:6px;">Master of Science — Mechanical Engineering (AI &amp; Machine Learning Emphasis)<br>May 2026 – Dec 2027</div>
-      <div class="edu-activities" style="margin-bottom:14px;">Concurrent with BS program</div>
-      <div class="edu-activities">Theta Tau · Engineers Without Borders · MEDesign · Ski Team · Brazilian Jiu-Jitsu</div>
+      <div class="edu-degree" style="margin-bottom:14px;">Master of Science — Mechanical Engineering (AI &amp; Machine Learning Emphasis)<br>Aug 2026 – Dec 2027</div>
+      <div class="edu-activities">Activities: Theta Tau · Engineers Without Borders · MEDesign · Ski Team · Brazilian Jiu-Jitsu</div>
     </div>
 
     <!-- INSEAD -->
     <div class="edu-card">
       <img src="images/insead-logo.png" alt="INSEAD" class="edu-logo">
       <div class="edu-school">INSEAD Business School</div>
+      <div class="edu-location">Fontainebleau, France</div>
       <div class="edu-degree">Summer Business Program<br>Jul 2022 – Aug 2022</div>
-      <div class="edu-activities">Fontainebleau, France</div>
     </div>
 
     <!-- AAU -->
     <div class="edu-card">
       <img src="images/aau-logo.png" alt="Anglo-American University" class="edu-logo">
       <div class="edu-school">Anglo-American University</div>
+      <div class="edu-location">Prague, Czechia</div>
       <div class="edu-degree">Study Abroad Exchange Program<br>Aug 2023 – Dec 2023</div>
-      <div class="edu-activities">Prague, Czechia</div>
       <div class="edu-activities">Activities: Climbing Club</div>
     </div>
 
@@ -367,9 +387,10 @@
     <div class="edu-card">
       <img src="images/vhs-logo.png" alt="Ventura High School" class="edu-logo">
       <div class="edu-school">Ventura High School</div>
+      <div class="edu-location">Ventura, CA</div>
       <div class="edu-degree">High School Diploma<br>Feb 2022 – Jun 2023</div>
-      <div class="edu-degree">Ventura, CA</div>
-      <div class="edu-gpa">GPA 4.493 · Summa Cum Laude</div>
+      <div class="edu-gpa" style="display:block;margin-bottom:6px;">GPA 4.493</div>
+      <div class="edu-gpa" style="display:block;margin-bottom:14px;">Summa Cum Laude</div>
       <div class="edu-activities">Activities: Casitas Rowing</div>
     </div>
   </div>
@@ -410,6 +431,10 @@
     </div>
     <div class="honor-issuer">USC · University of Southern California</div>
     <div class="honor-desc">Awarded three consecutive semesters for academic excellence at the USC Viterbi School of Engineering.</div>
+    <div class="award-badge" style="margin-top:14px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>
+      3× Dean's List
+    </div>
   </div>
 
 </main>
