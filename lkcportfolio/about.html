@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Léo Crampé</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ── ABOUT LAYOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-left { position: sticky; top: 100px; }
+
+  .photo-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--tag-bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+  .photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .contact-list { display: flex; flex-direction: column; gap: 11px; }
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+  .contact-item svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 1px; opacity: 0.55; stroke: var(--muted); }
+  .contact-item a { color: var(--accent); text-decoration: none; }
+  .contact-item a:hover { text-decoration: underline; }
+
+  /* ── ABOUT RIGHT ── */
+  .about-intro {
+    font-family: 'EB Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+  .about-right p {
+    font-size: 14.5px;
+    line-height: 1.8;
+    color: #3a3a38;
+    margin-bottom: 16px;
+  }
+
+  /* Stats row */
+  .stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 36px 0;
+  }
+  .stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 20px 22px;
+    transition: box-shadow 0.2s;
+  }
+  .stat-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+  .stat-num {
+    font-family: 'EB Garamond', serif;
+    font-size: 34px;
+    font-weight: 400;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .stat-card.download-cv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+  }
+  .stat-card.download-cv .cv-arrow {
+    font-family: 'EB Garamond', serif;
+    font-size: 32px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-card.download-cv .stat-label { text-align: center; }
+
+  @media (max-width: 720px) {
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .about-left { position: static; }
+    .photo-frame { max-width: 180px; aspect-ratio: 1/1; }
+    .stats-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1><span>Léo</span> <span>Crampé</span></h1>
+  <nav>
+    <a href="about.html" class="active">About</a>
+    <a href="experience.html">Experience</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+  </nav>
+</header>
+
+<main>
+  <p class="page-title">About</p>
+  <p class="page-subtitle">Biomedical Engineer · USC Viterbi · Class of 2027</p>
+  <div class="section-divider" style="margin: 20px 0 40px;"></div>
+
+  <div class="about-grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="about-left">
+      <div class="photo-frame">
+        <img src="images/headshot.png" alt="Léo Crampé">
+      </div>
+
+      <div class="contact-list">
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Los Angeles, CA
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:cramp@usc.edu">cramp@usc.edu</a>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://www.linkedin.com/in/leocrampe/" target="_blank">linkedin.com/in/leocrampe</a>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.18 19.79 19.79 0 01.12 2.55a2 2 0 012-1.73h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          (805) 201-5238
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          US &amp; French Citizen · Raised in Singapore
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="about-right">
+      <p class="about-intro">Building devices that help people in real, tangible ways.</p>
+
+      <p>I'm a biomedical engineering student at USC, drawn to hands-on work at the intersection of engineering and medicine. I'm especially interested in medical devices, where thoughtful design and problem solving can directly improve lives. That's the kind of work I want to be part of.</p>
+
+      <p>I kicked off my career with an internship at Zimmer Biomet in Québec, where I worked in French as part of a dynamic, cross-functional team testing the ROSA robotic knee system. I've also studied abroad in Prague, driven by a genuine curiosity to experience cultures and ways of thinking beyond my own. These opportunities taught me how to adapt quickly, collaborate across differences, and stay flexible in the face of change.</p>
+
+      <p>From systems design to hands-on prototyping, I'm most excited when the work is practical, people-focused, and a little unpredictable. I'm always ready to dive in, figure things out, and contribute wherever I can make a difference.</p>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-num">3.66</div>
+          <div class="stat-label">GPA · USC Viterbi</div>
+        </div>
+        <a href="May_2026_Leo_Crampe_Resume_Version_L.pdf" class="stat-card download-cv" target="_blank">
+          <div class="cv-arrow">↓</div>
+          <div class="stat-label">Download CV</div>
+        </a>
+      </div>
+
+      <div class="page-nav">
+        <a href="experience.html" class="btn primary">View Experience →</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+</body>
+</html>
