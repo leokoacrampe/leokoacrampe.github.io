@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Léo Crampé — Experience</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ── EXPERIENCE CARDS — same card DNA as project cards ── */
+  .exp-card {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .exp-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+
+  .exp-card-inner {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 0;
+    min-height: 160px;
+  }
+
+  /* Left accent strip */
+  .exp-left {
+    padding: 28px 24px;
+    border-right: 1px solid var(--rule);
+    background: var(--cream);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 6px;
+  }
+  .exp-left .company {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+  .exp-left .location {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 2px;
+    line-height: 1.5;
+  }
+  .exp-left .date-pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 3px 9px;
+    border-radius: 2px;
+    margin-top: 10px;
+    width: fit-content;
+  }
+  .exp-logo {
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    object-fit: contain;
+    margin-top: 20px;
+    border-radius: 6px;
+    mix-blend-mode: multiply;
+  }
+  .date-pill-gold {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #7a5200;
+    background: #fdf3dc;
+    border: 1px solid #f0d88a;
+    padding: 3px 9px;
+    border-radius: 2px;
+    margin-top: 10px;
+    width: fit-content;
+  }
+
+  /* Right content */
+  .exp-right {
+    padding: 28px 32px;
+  }
+  .exp-role {
+    font-family: 'EB Garamond', serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  /* Education — full-width cards with logo left panel */
+  .edu-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .edu-card {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .edu-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+  .edu-left {
+    background: var(--cream);
+    border-right: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 24px;
+  }
+  .edu-logo {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    mix-blend-mode: multiply;
+  }
+  .edu-right {
+    padding: 28px 32px;
+  }
+  .edu-school {
+    font-family: 'EB Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.25;
+    margin-bottom: 4px;
+  }
+  .edu-location {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .edu-degree {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .edu-gpa {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 3px 9px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+  }
+  .edu-divider {
+    height: 1px;
+    background: var(--rule);
+    margin: 16px 0;
+  }
+  .edu-activities {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* Honor cards */
+  .honor-card {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    transition: box-shadow 0.2s;
+  }
+  .honor-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+  .honor-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .honor-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 19px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .honor-date {
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+    padding-top: 3px;
+  }
+  .honor-issuer {
+    font-size: 12.5px;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .honor-desc {
+    font-size: 13.5px;
+    color: #2c2c2a;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 720px) {
+    .exp-card-inner { grid-template-columns: 1fr; }
+    .exp-left { border-right: none; border-bottom: 1px solid var(--rule); padding: 20px; }
+    .exp-right { padding: 20px; }
+    .edu-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Léo <span>Crampé</span></h1>
+  <nav>
+    <a href="index.html">About</a>
+    <a href="experience.html" class="active">Experience</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+  </nav>
+</header>
+
+<main>
+  <p class="page-title">Experience</p>
+
+  <!-- ══ WORK ══ -->
+  <div class="section-divider"><span>Work</span></div>
+
+  <!-- Zimmer Biomet -->
+  <div class="exp-card">
+    <div class="exp-card-inner">
+      <div class="exp-left">
+        <div class="company">Zimmer Biomet</div>
+        <div class="location">Montreal, QC, Canada · On-site</div>
+        <div class="date-pill-gold">May 2025 – Aug 2025</div>
+        <img src="images/zimmer-logo.png" alt="Zimmer Biomet" class="exp-logo">
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Systems Designer Intern</div>
+        <ul class="bullet-list">
+          <li>Tested the ROSA Knee System as part of the performance team — biomechanics analysis for cut accuracy evaluations, bone registration, knee state angles, and bone painting per ISO 13485 QMS and design validation requirements.</li>
+          <li>Reduced processing times from 3 minutes to 3 seconds across 200+ executions by developing a SolidWorks macro that automated alignment of femur and tibia models using 3D spatial coordinate algorithms for precise validation of robot-calculated cut planes.</li>
+          <li>Authored sections of 7 FDA-compliant DVeP &amp; DVeRs for medical device design, gaining experience in regulatory-compliant documentation and traceability processes in a French-speaking engineering environment.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag highlight">SolidWorks</span>
+          <span class="tag highlight">ISO 13485</span>
+          <span class="tag highlight">Verification and Validation Testing</span>
+          <span class="tag highlight">FDA Documentation</span>
+          <span class="tag highlight">Biomechanics</span>
+          <span class="tag highlight">SolidWorks Macro</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NeuroSense -->
+  <div class="exp-card">
+    <div class="exp-card-inner">
+      <div class="exp-left">
+        <div class="company">NeuroSense</div>
+        <div class="location">Los Angeles, CA · Self-employed</div>
+        <div class="date-pill-gold">Sep 2025 – Present</div>
+        <img src="images/neurosense-logo.png" alt="NeuroSense" class="exp-logo">
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Co-Founder</div>
+        <ul class="bullet-list">
+          <li>Designing a medical device capable of quantitatively measuring sensory loss for patients with peripheral neuropathy, addressing a gap in objective clinical diagnosis.</li>
+          <li>Selected as a MFC Semifinalist — 11 of 88 teams competing for $50,000 in funding through USC Viterbi TIE Hub's structured mentorship and startup program (Apr 2026).</li>
+        </ul>
+        <div class="tags">
+          <span class="tag highlight">Arduino</span>
+          <span class="tag highlight">Clinical Research</span>
+          <span class="tag highlight">Medical Device Design</span>
+          <span class="tag highlight">Entrepreneurship</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVSEA -->
+  <div class="exp-card">
+    <div class="exp-card-inner">
+      <div class="exp-left">
+        <div class="company">Department of Defense, NAVSEA</div>
+        <div class="location">Port Hueneme, CA · On-site</div>
+        <div class="date-pill-gold">Aug 2022 – Dec 2022</div>
+        <img src="images/navsea-logo.png" alt="NAVSEA" class="exp-logo">
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Student Engineer</div>
+        <ul class="bullet-list">
+          <li>Functioned as an informational analyst studying data from an underwater rover interpreting geophysical insights.</li>
+          <li>Prototyped initial designs for 20+ rockets using CAD, 3D printing, and military equipment in a defense engineering environment.</li>
+        </ul>
+        <div class="tags">
+          <span class="tag highlight">CAD</span>
+          <span class="tag highlight">3D Printing</span>
+          <span class="tag highlight">Data Analysis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ VOLUNTEERING ══ -->
+  <div class="section-divider"><span>Volunteering</span></div>
+
+  <!-- Theta Tau -->
+  <div class="exp-card">
+    <div class="exp-card-inner">
+      <div class="exp-left">
+        <div class="company">Theta Tau — Kappa Epsilon Chapter</div>
+        <div class="location">USC · Science and Technology</div>
+        <div class="date-pill-gold">May 2024 – May 2025</div>
+        <img src="images/theta-tau-logo.png" alt="Theta Tau" class="exp-logo">
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Social Chair &amp; New Member Educator</div>
+        <p class="section-label">Social Chair</p>
+        <ul class="bullet-list">
+          <li>Enhanced social engagement for 60+ members; coordinated logistics, vendor relationships, and event promotion for successful chapter initiatives.</li>
+          <li>Generated $2,000+ from networking and social events.</li>
+        </ul>
+        <p class="section-label">New Member Educator</p>
+        <ul class="bullet-list">
+          <li>Led onboarding and integration of 14 incoming members into the chapter.</li>
+          <li>Designed a 12-week education program covering fraternity values, professional development, and chapter involvement; mentored individuals to support their unique goals from day one.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- EWB -->
+  <div class="exp-card">
+    <div class="exp-card-inner">
+      <div class="exp-left">
+        <div class="company">Engineers Without Borders — USC Chapter</div>
+        <div class="location">Human Rights</div>
+        <div class="date-pill-gold">Sep 2025 – Present</div>
+        <img src="images/ewb-logo.png" alt="Engineers Without Borders" class="exp-logo">
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Bolivia Project Team Member</div>
+        <ul class="bullet-list">
+          <li>Built water access solutions using engineering principles for the Yanani village in Bolivia.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ EDUCATION ══ -->
+  <div class="section-divider"><span>Education</span></div>
+
+  <div class="edu-grid">
+    <!-- USC — combined BS + MS -->
+    <div class="edu-card">
+      <div class="edu-left">
+        <img src="images/usc-logo.png" alt="USC" class="edu-logo">
+      </div>
+      <div class="edu-right">
+        <div class="edu-school">University of Southern California</div>
+        <div class="edu-location">Los Angeles, CA</div>
+        <div class="edu-degree">Bachelor of Science — Biomedical Engineering (Mechanical Emphasis)<br>Jan 2024 – May 2027</div>
+        <div class="edu-gpa">GPA 3.66</div>
+        <div class="edu-divider"></div>
+        <div class="edu-degree" style="margin-bottom:14px;">Master of Science — Mechanical Engineering (AI &amp; Machine Learning Emphasis)<br>Aug 2026 – Dec 2027</div>
+        <div class="edu-activities">Activities: Theta Tau · Engineers Without Borders · MEDesign · Ski Team · Brazilian Jiu-Jitsu</div>
+      </div>
+    </div>
+
+    <!-- INSEAD -->
+    <div class="edu-card">
+      <div class="edu-left">
+        <img src="images/insead-logo.png" alt="INSEAD" class="edu-logo">
+      </div>
+      <div class="edu-right">
+        <div class="edu-school">INSEAD Business School</div>
+        <div class="edu-location">Fontainebleau, France</div>
+        <div class="edu-degree">Summer Business Program<br>Jul 2022 – Aug 2022</div>
+      </div>
+    </div>
+
+    <!-- AAU -->
+    <div class="edu-card">
+      <div class="edu-left">
+        <img src="images/aau-logo.png" alt="Anglo-American University" class="edu-logo">
+      </div>
+      <div class="edu-right">
+        <div class="edu-school">Anglo-American University</div>
+        <div class="edu-location">Prague, Czechia</div>
+        <div class="edu-degree">Study Abroad Exchange Program<br>Aug 2023 – Dec 2023</div>
+        <div class="edu-activities">Activities: Climbing Club</div>
+      </div>
+    </div>
+
+    <!-- VHS -->
+    <div class="edu-card">
+      <div class="edu-left">
+        <img src="images/vhs-logo.png" alt="Ventura High School" class="edu-logo">
+      </div>
+      <div class="edu-right">
+        <div class="edu-school">Ventura High School</div>
+        <div class="edu-location">Ventura, CA</div>
+        <div class="edu-degree">High School Diploma<br>Feb 2022 – Jun 2023</div>
+        <div class="edu-gpa" style="display:block;margin-bottom:6px;">GPA 4.493</div>
+        <div class="edu-gpa" style="display:block;margin-bottom:14px;">Summa Cum Laude</div>
+        <div class="edu-activities">Activities: Casitas Rowing</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ HONORS ══ -->
+  <div class="section-divider"><span>Honors &amp; Awards</span></div>
+
+  <div class="honor-card">
+    <div class="honor-header">
+      <div class="honor-title">Min Family Challenge (MFC) Semifinalist</div>
+      <div class="honor-date">Apr 2026</div>
+    </div>
+    <div class="honor-issuer">TIE Hub — USC Viterbi · Associated with NeuroSense</div>
+    <div class="honor-desc">USC Viterbi Min Family Challenge Spring 2026 Semifinalist — 11 teams selected from 88 competitors. Competed for $50,000 in funding and participated in a structured program providing mentorship, startup support, and entrepreneurship education.</div>
+    <div class="award-badge" style="margin-top:14px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>
+      $50,000 competition · 11 of 88 teams
+    </div>
+  </div>
+
+  <div class="honor-card">
+    <div class="honor-header">
+      <div class="honor-title">ASBME Make-a-thon 2nd Place</div>
+      <div class="honor-date">Feb 2025</div>
+    </div>
+    <div class="honor-issuer">ASBME · University of Southern California</div>
+    <div class="honor-desc">Earned 2nd place and a $600 award for the Smart Knee Brace — a corrective brace with haptic feedback for athlete rehabilitation — built in 48 hours at the USC Biomedical Make-a-thon.</div>
+    <div class="award-badge" style="margin-top:14px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>
+      $600 award · 2nd place
+    </div>
+  </div>
+
+  <div class="honor-card">
+    <div class="honor-header">
+      <div class="honor-title">USC Viterbi Dean's List</div>
+      <div class="honor-date">Fall 2024 · Spring 2025 · Fall 2025</div>
+    </div>
+    <div class="honor-issuer">USC · University of Southern California</div>
+    <div class="honor-desc">Awarded three consecutive semesters for academic excellence at the USC Viterbi School of Engineering.</div>
+    <div class="award-badge" style="margin-top:14px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg>
+      3× Dean's List
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>
