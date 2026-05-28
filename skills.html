@@ -68,10 +68,10 @@
 
 <main>
   <p class="page-title">Skills</p>
-  <p class="page-subtitle">Technical toolkit across mechanical, electrical, software, and biomedical engineering</p>
+  <p class="page-subtitle">Technical Toolkit</p>
 
   <div class="chart-wrap">
-    <svg id="skills-svg" viewBox="-250 -250 1900 1400" preserveAspectRatio="xMidYMid meet"></svg>
+    <svg id="skills-svg" viewBox="-500 -500 2600 2100" preserveAspectRatio="xMidYMid meet"></svg>
   </div>
 
   <!-- Languages -->
@@ -106,11 +106,12 @@ const TREE = {
   name: "Skills", r: 82, fill: "#e8e5df", textFill: "#1a1a18",
   children: [
     {
+      // upper-left: dense branch (CAD has 7 leaves)
       name: "Mechanical", r: 70, fill: "#e8a87c", textFill: "#4a2000",
-      catAngle: 230, catDist: 310,
-      childSpread: 118, childDist: 200,
+      catAngle: 225, catDist: 500,
+      childSpread: 130, childDist: 260,
       children: [
-        { name: "CAD", r: 44, childSpread: 88, childDist: 130,
+        { name: "CAD", r: 44, childSpread: 130, childDist: 185,
           children: [
             { name: "SolidWorks",   r: 26 },
             { name: "Siemens NX",   r: 24 },
@@ -121,14 +122,14 @@ const TREE = {
             { name: "ENOVIA",       r: 22 }
           ]
         },
-        { name: "Design", r: 36, childSpread: 72, childDist: 125,
+        { name: "Design", r: 36, childSpread: 82, childDist: 155,
           children: [
             { name: "FEA",   r: 22 },
             { name: "GD&T",  r: 22 },
             { name: "DFMA",  r: 22 }
           ]
         },
-        { name: "Analysis", r: 34, childSpread: 70, childDist: 120,
+        { name: "Analysis", r: 34, childSpread: 74, childDist: 148,
           children: [
             { name: "DFMEA", r: 23 },
             { name: "RCA",   r: 20 }
@@ -137,11 +138,12 @@ const TREE = {
       ]
     },
     {
+      // upper-right: constrained spread to avoid Electrical
       name: "Lab", r: 60, fill: "#c3a8e8", textFill: "#2e0a5a",
-      catAngle: 308, catDist: 310,
-      childSpread: 100, childDist: 195,
+      catAngle: 285, catDist: 500,
+      childSpread: 65, childDist: 260,
       children: [
-        { name: "Testing", r: 36, childSpread: 86, childDist: 128,
+        { name: "Testing", r: 36, childSpread: 110, childDist: 162,
           children: [
             { name: "Instron",      r: 22 },
             { name: "Pitot Tube",   r: 25 },
@@ -150,7 +152,7 @@ const TREE = {
             { name: "DSP",          r: 20 }
           ]
         },
-        { name: "Fabrication", r: 34, childSpread: 80, childDist: 124,
+        { name: "Fabrication", r: 34, childSpread: 78, childDist: 152,
           children: [
             { name: "3D Printing",      r: 26 },
             { name: "Waterjet Cutting", r: 28 },
@@ -161,9 +163,10 @@ const TREE = {
       ]
     },
     {
+      // left: 6 direct leaves, wide fan
       name: "Software", r: 62, fill: "#85b8d4", textFill: "#0e2d42",
-      catAngle: 148, catDist: 310,
-      childSpread: 154, childDist: 175,
+      catAngle: 155, catDist: 500,
+      childSpread: 158, childDist: 215,
       children: [
         { name: "Python",        r: 28 },
         { name: "MATLAB",        r: 28 },
@@ -174,18 +177,19 @@ const TREE = {
       ]
     },
     {
+      // lower-right: constrained spread to avoid Electrical
       name: "Biomedical", r: 62, fill: "#82c882", textFill: "#0e3a0e",
-      catAngle: 46, catDist: 310,
-      childSpread: 106, childDist: 195,
+      catAngle: 55, catDist: 500,
+      childSpread: 80, childDist: 260,
       children: [
-        { name: "Regulatory", r: 36, childSpread: 76, childDist: 124,
+        { name: "Regulatory", r: 36, childSpread: 84, childDist: 155,
           children: [
             { name: "ISO 13485",       r: 26 },
             { name: "FDA DVeP & DVeR", r: 28 },
             { name: "GMP / QA",        r: 24 }
           ]
         },
-        { name: "Molecular Bio", r: 34, childSpread: 88, childDist: 128,
+        { name: "Molecular Bio", r: 34, childSpread: 100, childDist: 160,
           children: [
             { name: "PCR",                 r: 20 },
             { name: "Gel Electrophoresis", r: 30 },
@@ -196,11 +200,12 @@ const TREE = {
       ]
     },
     {
+      // right: centered between Lab (285°) and Biomedical (55°)
       name: "Electrical", r: 64, fill: "#f5d76e", textFill: "#3a2d00",
-      catAngle: 356, catDist: 310,
-      childSpread: 106, childDist: 195,
+      catAngle: 345, catDist: 500,
+      childSpread: 80, childDist: 260,
       children: [
-        { name: "Electronics", r: 36, childSpread: 88, childDist: 128,
+        { name: "Electronics", r: 36, childSpread: 90, childDist: 162,
           children: [
             { name: "KiCad",        r: 22 },
             { name: "LTspice",      r: 24 },
@@ -209,7 +214,7 @@ const TREE = {
             { name: "Oscilloscope", r: 28 }
           ]
         },
-        { name: "Sensors", r: 33, childSpread: 84, childDist: 122,
+        { name: "Sensors", r: 33, childSpread: 98, childDist: 152,
           children: [
             { name: "Accelerometer",   r: 28 },
             { name: "Gyroscope",       r: 25 },
@@ -223,7 +228,7 @@ const TREE = {
 };
 
 // ── LAYOUT ─────────────────────────────────────────────────────────────────
-const CX = 700, CY = 470;
+const CX = 900, CY = 650;
 TREE.x = CX; TREE.y = CY;
 
 function placeChildren(parent, outAngle, spread, dist) {

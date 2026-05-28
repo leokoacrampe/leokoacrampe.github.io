@@ -192,15 +192,11 @@ main {
 .project-media.single-col { grid-template-columns: 1fr; }
 
 .img-block {
-  height: 230px;
   overflow: hidden;
   background: #f0eeea;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .img-block.full { grid-column: 1 / -1; }
-.img-block img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.img-block img { width: 100%; height: auto; display: block; }
 
 .img-placeholder {
   width: 100%;
