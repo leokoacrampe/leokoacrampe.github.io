@@ -215,6 +215,24 @@
     line-height: 1.6;
   }
 
+  /* Photo strip inside exp-right */
+  .exp-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 20px;
+  }
+  .exp-photo-block {
+    overflow: hidden;
+    border-radius: 3px;
+    background: #f0eeea;
+  }
+  .exp-photo-block img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
   @media (max-width: 720px) {
     .exp-card-inner { grid-template-columns: 1fr; }
     .exp-left { border-right: none; border-bottom: 1px solid var(--rule); padding: 20px; }
@@ -266,6 +284,13 @@
           <span class="tag highlight">FDA Documentation</span>
           <span class="tag highlight">Biomechanics</span>
           <span class="tag highlight">SolidWorks Macro</span>
+        </div>
+        <div class="exp-photos">
+          <div class="exp-photo-block"><img src="images/zb/IMG_4422.jpeg" alt="Zimmer Biomet workplace"></div>
+          <div class="exp-photo-block"><img src="images/zb/IMG_4425.jpeg" alt="Zimmer Biomet lab"></div>
+          <div class="exp-photo-block"><img src="images/zb/IMG_4427.jpeg" alt="Zimmer Biomet equipment"></div>
+          <div class="exp-photo-block"><img src="images/zb/IMG_4430.jpeg" alt="Zimmer Biomet testing"></div>
+          <div class="exp-photo-block"><img src="images/zb/IMG_4467.jpeg" alt="Zimmer Biomet work"></div>
         </div>
       </div>
     </div>
