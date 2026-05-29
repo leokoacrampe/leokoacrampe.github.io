@@ -145,14 +145,98 @@
     color: var(--muted);
   }
 
+  /* ── OPPORTUNITY BANNER ── */
+  .opportunity-banner {
+    background: var(--card-bg);
+    border: 1px solid var(--rule);
+    border-left: 3px solid #2e9e5b;
+    border-radius: 4px;
+    padding: 20px 26px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .opportunity-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .opp-dot-wrap {
+    padding-top: 3px;
+    flex-shrink: 0;
+  }
+  .opp-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #2e9e5b;
+    position: relative;
+  }
+  .opp-dot::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    background: #2e9e5b;
+    opacity: 0.25;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.25; }
+    50%       { transform: scale(1.7); opacity: 0; }
+  }
+  .opp-text-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 5px;
+  }
+  .opp-text-sub {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .opp-text-sub span {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin: 2px 3px 2px 0;
+  }
+  .opp-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+
   @media (max-width: 720px) {
     .about-grid { grid-template-columns: 1fr; gap: 32px; }
     .about-left { position: static; }
     .photo-frame { max-width: 180px; aspect-ratio: 1/1; }
     .stats-row { grid-template-columns: 1fr; }
     .degree-row { grid-template-columns: 1fr; }
+    .opportunity-banner { flex-direction: column; align-items: flex-start; }
+    .opp-actions { width: 100%; }
+    .opp-actions .btn { flex: 1; text-align: center; }
   }
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6SXKMCTZBC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6SXKMCTZBC');
+</script>
 </head>
 <body>
 
@@ -170,6 +254,28 @@
 <main>
   <p class="page-title">About</p>
   <p class="page-subtitle">Student at the University of Southern California</p>
+  <!-- ── OPPORTUNITY BANNER ── -->
+  <div class="opportunity-banner">
+    <div class="opportunity-left">
+      <div class="opp-dot-wrap"><div class="opp-dot"></div></div>
+      <div>
+        <div class="opp-text-title">Open to Internship Opportunities</div>
+        <div class="opp-text-sub">
+          Actively seeking Summer / Fall 2026 internships in
+          <span>Biomedical Engineering</span>
+          <span>Systems Engineering</span>
+          <span>Mechanical Engineering</span>
+          <span>Manufacturing Engineering</span>
+          and related fields.
+        </div>
+      </div>
+    </div>
+    <div class="opp-actions">
+      <a href="https://www.linkedin.com/in/leocrampe/" target="_blank" class="btn primary">Connect on LinkedIn</a>
+      <a href="mailto:cramp@usc.edu" class="btn">Send Email</a>
+    </div>
+  </div>
+
   <div class="about-grid">
 
     <!-- LEFT COLUMN -->
